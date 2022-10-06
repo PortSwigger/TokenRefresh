@@ -282,8 +282,6 @@ class BurpExtender(IBurpExtender, IHttpListener, ISessionHandlingAction, ITab):
         self.AuthDataValue.setColumns(20)
         self.AuthDataValue.setRows(5)
         self.AuthDataValue.setText("grant_type=client_credentials&client_id=CLIENTID&client_secret=CLIENTSECRET&scope=SCOPE&audience=AUDIENCE")
-        #self.AuthDataValue.setText(
-            "username=user&password=user")
         self.jScrollPane2.setViewportView(self.AuthDataValue)
 
         VariablesToSendLayout =  GroupLayout(self.VariablesToSend)
@@ -595,7 +593,7 @@ class thread(threading.Thread):
             #print "Making request \n"
             requested = cb.callbacks.makeHttpRequest(self.service, self.message)
         except Exception as e:
-            print e
+            print (e)
         response = cb.helpers.bytesToString(requested.getResponse())
         info = cb.helpers.analyzeResponse(response)
         body = response[info.getBodyOffset():]
